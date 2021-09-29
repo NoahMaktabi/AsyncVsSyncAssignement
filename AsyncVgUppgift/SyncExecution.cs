@@ -7,7 +7,7 @@ namespace AsyncVgUppgift
 {
     public class SyncExecution
     {
-        public void Start()
+        public static void Start()
         {
             var watch = Stopwatch.StartNew();
             RunDownloadSync();
@@ -21,9 +21,9 @@ namespace AsyncVgUppgift
         {
             var websites = WebsiteList.GetWebsiteList();
 
-            foreach (var result in websites.Select(DownloadWebsite))
+            foreach (var url in websites)
             {
-                result.ReportWebsiteInfo();
+                DownloadWebsite(url);
             }
         }
 
@@ -31,10 +31,10 @@ namespace AsyncVgUppgift
         {
             var output = new WebsiteDataModel();
             var client = new WebClient();
-
+            
             output.Url = websiteUrl;
             output.Data = client.DownloadString(websiteUrl);
-            Thread.Sleep(500);
+            output.ReportWebsiteInfo();
             return output;
         }
 

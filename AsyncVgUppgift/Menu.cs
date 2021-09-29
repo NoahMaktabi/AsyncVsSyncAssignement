@@ -13,7 +13,9 @@ This application shows the difference between asynchronous and synchronous progr
 To demonstrate choose to run program synchronously and then again asynchronously.
 You will then notice that the asynchronous program runs a lot faster that the synchronous. Almost twice as fast.
 If this was a WPF or Winforms application. The app then would lock itself when running synchronously. 
-But now when running asynchronously. 
+But not when running asynchronously. 
+
+What this app is doing i both cases is downloading the same websites as strings and displaying how many characters the string contains. 
 
 Press any key to return to main menu...
 ";
@@ -24,7 +26,7 @@ Press any key to return to main menu...
                 case 1:
                     Console.Clear();
                     var sync = new SyncExecution();
-                    sync.Start();
+                    SyncExecution.Start();
                     "Sync execution is done... Press any key to return to main menu".ShowAnimatedText(20);
                     Console.ReadKey(true);
                     Console.Clear();
